@@ -7,6 +7,7 @@ class Blog(models.Model):
     author = models.ForeignKey('Profile', on_delete=models.CASCADE)
     liked_by = models.ManyToManyField(
         'Profile', related_name='liked_blogs', blank=True)
+    read_time = models.IntegerField(default=0)
 
     class Meta:
         verbose_name = "Blog"

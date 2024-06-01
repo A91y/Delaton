@@ -79,14 +79,9 @@ class BlogDeleteView(View):
 class BlogListView(View):
     def get(self, request):
         data = json.loads(request.body)
-        author_address = data.get('author_address', None)
         blogs = Blog.objects.all()
-        liked_by = []
-        # for blog in blogs:
-        #     for author in blog.liked_by.all():
-        #         liked_by.append(author.user_address)
         data = [{'id': blog.id, 'title': blog.title, 'content': blog.content,
-                 'author': blog.author.user_address, 'liked_by': [author.user_address for author in blog.liked_by.all()]} for blog in blogs]
+                 'author': blog.author.user_address, 'liked_by': [author.user_address for author in blog.liked_by.all()], 'read_time': blog.read_time} for blog in blogs]
         return JsonResponse(data, safe=False)
 
 
@@ -98,7 +93,7 @@ class BlogDetailView(View):
             return JsonResponse({'error': 'Blog not found'}, status=404)
 
         data = {'id': blog.id, 'title': blog.title,
-                'content': blog.content, 'author': blog.author.user_address, 'liked_by': [author.user_address for author in blog.liked_by.all()]}
+                'content': blog.content, 'author': blog.author.user_address, 'liked_by': [author.user_address for author in blog.liked_by.all()], 'read_time': blog.read_time}
         return JsonResponse(data)
 
 
