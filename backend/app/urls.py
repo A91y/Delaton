@@ -4,6 +4,8 @@ from .views import profile, blogs
 urlpatterns = [
     path('profile/sign/', profile.ProfileLoginOrRegisterView.as_view(),
          name='profile-sign'),
+    path('profile/<str:user_address>/', profile.ProfileDetailView.as_view(),
+         name='profile-detail'),
     path('profile/<str:user_address>/update/',
          profile.ProfileUpdateView.as_view(), name='profile-update'),
 ]

@@ -27,6 +27,16 @@ class ProfileLoginOrRegisterView(View):
         return JsonResponse({'user_address': profile.user_address, 'message': 'Profile created successfully'}, status=201)
 
 
+class ProfileDetailView(View):
+    def get(self, request, user_address):
+        try:
+            profile = Profile.objects.get(pk=user_address)
+        except Profile.DoesNotExist:
+            return JsonResponse({'error': 'Profile not found'}, status=404)
+
+        return JsonResponse({'user_address': profile.user_address, 'name': profile.name, 'bio': profile.bio, 'tokens': profile.spent_tokens + profile.unspent_tokens})
+
+
 @method_decorator(csrf_exempt, name='dispatch')
 class ProfileUpdateView(View):
     def put(self, request, user_address):
