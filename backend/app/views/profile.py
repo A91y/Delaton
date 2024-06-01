@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-from .models import Profile
+from ..models import Profile
 import json
 
 
