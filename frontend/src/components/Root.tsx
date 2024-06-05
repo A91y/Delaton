@@ -23,7 +23,7 @@ const ErrorBoundaryError: FC<{ error: unknown }> = ({ error }) => (
 const Inner: FC = () => {
   const debug = useLaunchParams().startParam === 'debug';
   const manifestUrl = useMemo(() => {
-    return new URL('tonconnect-manifest.json', window.location.href).toString();
+    return "https://raw.githubusercontent.com/A91y/Delaton/main/frontend/public/tonconnect-manifest.json";
   }, []);
 
   // Enable debug mode to see all the methods sent and events received.
