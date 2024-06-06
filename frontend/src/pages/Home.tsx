@@ -51,7 +51,7 @@ const Home: React.FC = () => {
         <div className='w-[100vw] overflow-hidden'>
             <Navbar />
             <Bar />
-            <ConnectWallet/>
+            {/* <ConnectWallet/> */}
             <div className="blog-cards mt-[14vh] mb-[10vh] flex flex-col p-4">
                 {blogData ? (
                     blogData.map((post, index) => (
