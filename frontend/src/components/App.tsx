@@ -18,6 +18,11 @@ import {
 } from 'react-router-dom';
 
 import { routes } from '@/navigation/routes.tsx';
+// import React from 'react';
+// import './App.css';
+import '../index.css'
+
+import 'tailwindcss/tailwind.css'
 
 export const App: FC = () => {
   const lp = useLaunchParams();
@@ -50,7 +55,8 @@ export const App: FC = () => {
   }, [navigator]);
 
   return (
-    <AppRoot
+    <AppRoot 
+    className='bg-midnight min-h-screen'
       appearance={miniApp.isDark ? 'dark' : 'light'}
       platform={['macos', 'ios'].includes(lp.platform) ? 'ios' : 'base'}
     >
